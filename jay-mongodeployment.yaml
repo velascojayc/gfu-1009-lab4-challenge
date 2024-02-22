@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jay-mongodeployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jay-mongo
+  template:
+    metadata:
+      labels:
+        app: jay-mongo
+    spec:
+      containers:
+      - name: mongo
+        image: mongo
+        ports:
+        - containerPort: 27017
