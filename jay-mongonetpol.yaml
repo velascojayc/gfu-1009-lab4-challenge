@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: jay-mongo-ingress
+  namespace: default
+spec:
+  policyTypes:
+  - Ingress
+  podSelector:
+    matchLabels:
+      app: jay-mongo
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: jay-nginx
